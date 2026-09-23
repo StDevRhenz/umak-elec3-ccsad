@@ -5,7 +5,9 @@
 
 Instance launch failed
 
-You are not authorized to perform this operation. User: arn:aws:iam::548387266019:user/ccsad-g04 is not authorized to perform: **ec2:CreateSecurityGroup** on resource: arn:aws:ec2:ap-southeast-1:548387266019:vpc/vpc-02b29ff02cd658307 because no identity-based policy allows the ec2:CreateSecurityGroup action. Encoded authorization failure message: OIH6QTbpor6EoyZHdzm4D6U3O_wNNWv-53XamfhE4-1BxbmjOKimeEJVdo_EU9VoHk2nhp7ru3C1OenKZtcyQaXgIu6qkjpruWEc1Pcwa6RdncT_KeVXjmr4TCLsvx-W83KQ_6aKvzeyeFPckdt9ccm2xN_n1ErV-JHxvt_FbwGkZAvBoI9rhLVMV7CIsP4_-QUf2ahLwM2fhXi1QTtvu-esd8ltOlg61mOFlw7qnyjnCGdkUOb9ubI_UrUqyYEX0yB1osAC2Psp04w0PZpIa8HmazZBx2HjbRAvPysINS6s4_6f5tAJpZIAeZOQzjbI16D6kjf5ZlEBGxr4uGqHJO-p1kLAOfxtmayMwkwOVMhZ4KeDNtjtQhU69AdUpgWw4-JN3KRnCKVECmsGxjYIi9CEBy_w_FwpoDAsAEfvgVpChm6ZqpodVLvsImUnoU-9USym9D56V_zRpEzk4us-IoXCqs1JJzEAha7K069QAB3nFjIVskdSnCqMeUq9XU7zr8baxGStUuuEhW0DLHi8_QU7mAqYUC1RGEdPoVdnmmxUHbYoX9xtOPg5D7PAntjLsVrcHbA
+You are not authorized to perform this operation. User: arn:aws:iam::548387266019:user/ccsad-g04 is not authorized to perform: **ec2:RunInstances** on resource: arn:aws:ec2:ap-southeast-1:548387266019:instance/* because no identity-based policy allows the ec2:RunInstances action. Encoded authorization failure message: a_kxDzjfjJKCfdnmz8aC-bKJbh5Qv828QIfMEXFVltEMqYVrrx7AmHcuwGhCqx-JlGch84UNwhq-PwD7n-FfEytKFwvfu6kXNcmrTtp_nnpzcJQck9_DiFM1YggESgT_vYNicGKdhQ5_5GHoDe5VVooihxPs5pnoPc9eCxwXraT_K7xzne_YQXb12CC85jrXYJSh6y0Kituf70IKsoF6XzDmS2RFtMutzrG0OpF0SdJ188ijQw0rTzAfjCTg1KTLsvFV0Sbks8WFHVCGxP3K5t1lzSECezNNgt9WXyCpl2WBRRoTIx9mwSxjL9d5lVIlyOTtomk0a5WCXAbJc-AV6bc1hKvHBKQFSx_Qvc7Im46tFDDpaY7fwdk9FOkzFb8H52hmt3LsoR0mYEqspfSN6GzHrX6lR7bEcNv-WWBu_AA9bND4P9Nz5fXnKcBJWoRVkZ2NxikVferVBRdBXUhokE_-6jayfqZ6altSXBz2kDjAdg-8WFkyzTM4GKOHvKoAAWZIgwxrSELPU6EIKwEW_d0rzfM4Z5nS7Bl8pvNhOAoKMt2VJsvLwSDUqmNRy9Hhz10w1IwSwp9tJlBp6Hl5eLfC9j5giePFL7ZP6H1PkIxYonnNUtwtg3U0N_hxegbt2fvOhIcEd1_IW2kniiJCX-61N881po0EHgmiARnNLNNXOojNW8K1LoJEbg0Krbh_YiAcj11MhqiPS1p6o4jYW-cgaqmntn-TzeyEyUS4Ynv5hezj5vpE8HrHya_Tot8EdtB3yKBVWiGcMux3auS21t92SUu6hY2RAzJlLFhXAZcHb2Xjif2T-6P8
+
+![Part B launch denial with username visible](part-b-error.png)
 
 ## Part C
 **Policy Statement Blanks:**
@@ -13,7 +15,7 @@ You are not authorized to perform this operation. User: arn:aws:iam::54838726601
 - `"Resource"`: `instance` (resulting ARN: `arn:aws:ec2:ap-southeast-1:548387266019:instance/*`)
 - `"ec2:InstanceType"`: `t3.micro`
 
-These values follow the intended `RunOnlyT3MicroInstances` statement in the starter policy. The Part B attempt instead returned `ec2:CreateSecurityGroup` on a VPC resource, as recorded above.
+These values follow the `ec2:RunInstances` denial from Part B and the intended `RunOnlyT3MicroInstances` statement in the starter policy.
 
 ## Part D
 **Security Group Error Text:**
@@ -21,6 +23,14 @@ These values follow the intended `RunOnlyT3MicroInstances` statement in the star
 You are not authorized to perform this operation. User: arn:aws:iam::548387266019:user/ccsad-g04 is not authorized to perform: ec2:CreateSecurityGroup on resource: arn:aws:ec2:ap-southeast-1:548387266019:vpc/vpc-02b29ff02cd658307 because no identity-based policy allows the ec2:CreateSecurityGroup action. Encoded authorization failure message: oYEjsDmw9uEJjdOI8ABjYe2RQhYmXNBvqTNwBod5p1qBTRDnOWWu5DLKCY2VyaWr8mE1J47hPILB1ZnLvjJ03jiCgf9KFjLfawdEHO0cxwlPACtalKwGtAV3RwiZ1_-89180Qrf47ULYMWxaz6Nt-ruvU59Q5CE9-Ik7lL08uduMd0miDTNnw0jRwed3Gknu5nCd33HZhFt9VMDIbNJ9ixFJDsxsw_aIJ-rynvHYdex52j6OUtQdw047jozUlkbzdGVkbodj6dLERGAg5Pu7_tlYstB4BKec_kkHra0lwI4ZcTxaSmlY4JgKGTP9w_-1wQh5uImePaQFAeNo5CPwBinKvMUyE1Twh_a4pMtDyqnoYgQP2ip_d4TiBupVqyZZzzJIBapTIzgDNCqHwHm3yKENoSY7tXnCsgxiqP81c4nW51IrK3PP1UIyhQUm7gkUethaxjeTbGcgtSOs0FXE4iF7MXgUiauwwxbtXefE6QQSX2f98J8DjES2bwr4W6cx3_JLsmMw5jTk2e23Gg2XK_Z_RTkMJ7IXMI2Q9TZ8XwFs3lpvzQUSqQXS4lgm5Y5NSVlXv34
 
 **Running Instance Time:** Observed Running on 2026-09-22 at 22:21 PHT (exact transition time was not recorded). Instance ID: `i-066b5afae5ee03a3f`; tag: `team=ccsad-g04`.
+
+**Permissions tab listing `ccsad-g04-launch`:**
+
+![Permissions tab listing ccsad-g04-launch](part-d-policy.png)
+
+**Instance in Running state:**
+
+![Running EC2 instance](part-d-instance.png)
 
 ## Part E
 **t3.small denial before attaching the broad policy:**
@@ -37,13 +47,17 @@ You are not authorized to perform this operation. User: arn:aws:iam::54838726601
 
 **Tokyo VPC selector error:** You are not authorized to perform this operation. User: arn:aws:iam::548387266019:user/ccsad-g04 is not authorized to perform: ec2:DescribeVpcs with an explicit deny in a permissions boundary: arn:aws:iam::548387266019:policy/umak-lab-boundary.
 
-**Cleanup:** The termination request for instance `i-066b5afae5ee03a3f` completed without a console error. The temporary `ccsad-g04-too-wide` policy was detached and showed no attached entities, but repeated deletion attempts returned "Unexpected error".
+
+![Permissions boundary denial](part-e-denial.png)
+
 
 **CloudTrail `RunInstances` event:** `errorCode` was `Client.UnauthorizedOperation`. The `errorMessage` said: "You are not authorized to perform this operation. User: arn:aws:iam::548387266019:user/ccsad-g04 is not authorized to perform: ec2:RunInstances on resource: arn:aws:ec2:ap-southeast-1:548387266019:instance/* with an explicit deny in a permissions boundary: arn:aws:iam::548387266019:policy/umak-lab-boundary." The copied message's encoded authorization failure text was truncated.
 
+![CloudTrail RunInstances event](part-e-cloudtrail.png)
+
 ## Part F Questions
 1. Which action did the Part B error name?
-   Our Part B error named `ec2:CreateSecurityGroup`. The launch form attempted to create a security group, so this differed from the `ec2:RunInstances` denial expected for the instance policy exercise.
+   Our Part B error named `ec2:RunInstances`.
 
 2. In your policy, which condition limits `ec2:RunInstances`?
    The `RunOnlyT3MicroInstances` statement uses `StringEquals` on `ec2:InstanceType` with the value `t3.micro`.
